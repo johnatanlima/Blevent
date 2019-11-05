@@ -1,3 +1,5 @@
+using Blevent.Models;
+
 namespace AspCore04.Models
 {
     public class PatrocinadorEvento{

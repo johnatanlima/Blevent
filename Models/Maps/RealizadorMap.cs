@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AspCore04.Models.Maps
+namespace Blevent.Models.Maps
 {
     public class RealizadorMap : IEntityTypeConfiguration<Realizador>
     {

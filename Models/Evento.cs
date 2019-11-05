@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using AspCore04.Models;
 
-namespace AspCore04.Models{
+namespace Blevent.Models{
     public class Evento{
 
         public Evento()
