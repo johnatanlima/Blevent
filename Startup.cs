@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
+using System;
+using Locar.Models;
 
 namespace Blevent
 {
@@ -32,13 +34,37 @@ namespace Blevent
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+              //configurar os cookies da aplicação
+            services.ConfigureApplicationCookie(options => 
+            {
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(50); //Para definir o tempo até o cookie expirar
+                options.LoginPath = "/Usuarios/Login";
+                options.SlidingExpiration = true; //Depois que o tempo esgota, os cookies são renovados
+            });
+
+              services.Configure<IdentityOptions>(options => 
+            {
+                //Nesta etapa configuro preferências de como a senha precisa ser, do identity.
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 1;
+            });
+
             services.AddDbContext<BleventDbContexto>(options =>
                 options.UseMySql(
                     Configuration.GetConnectionString("myConn")));
 
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddDefaultUI(UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<BleventDbContexto>();
+             services.AddIdentity<Usuario, NivelAcesso>().AddEntityFrameworkStores<BleventDbContexto>();
+
+            //Por causa das DI que foram feitas no controller Home
+            services.AddScoped<SignInManager<Usuario>,SignInManager<Usuario>>();
+            services.AddScoped<UserManager<Usuario>,UserManager<Usuario>>();
+            services.AddScoped<RoleManager<NivelAcesso>, RoleManager<NivelAcesso>>();
+
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

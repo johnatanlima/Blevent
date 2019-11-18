@@ -13,6 +13,8 @@ namespace AspCore04.Models.Maps
 
             builder.Property(p => p.ValorPatrocinado).HasColumnType("decimal(9,2)").IsRequired();
 
+            builder.HasOne(x => x.EventoVirtual).WithMany(x => x.PatrociniosValor).OnDelete(DeleteBehavior.SetNull).HasForeignKey(x => x.EventoId);
+            builder.HasOne(x => x.PatrocinadorVirtual).WithMany(x => x.PatrociniosValor).OnDelete(DeleteBehavior.SetNull).HasForeignKey(x => x.PatrocinadorId);
             
             //Props de Navegação e Relacionamentos
             //Geradas automaticamente pelo EF Core

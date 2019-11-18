@@ -26,6 +26,7 @@ namespace AspCore04.Models.Maps
 
             //Props de Navegação e Relacionamentos
             //Geradas automaticamente pelo EF Core
+
         }
     }
 }
