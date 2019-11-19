@@ -26,7 +26,8 @@ namespace AspCore04.Models.Maps
 
             //Props de Navegação e Relacionamentos
             //Geradas automaticamente pelo EF Core
-
+            builder.HasOne(x => x.RealizadorVirtual).WithMany(x => x.Eventos).HasForeignKey(x => x.RealizadorId).OnDelete(DeleteBehavior.SetNull);
+            
         }
     }
 }

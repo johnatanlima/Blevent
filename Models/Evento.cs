@@ -42,7 +42,7 @@ namespace Blevent.Models{
         public DateTime DataFinal { get; set; }
         
         //Relacionamento EVENTO-REALIZADOR
-        public int RealizadorId {get; set;}
+        public int RealizadorId {get; set;} 
         public Realizador RealizadorVirtual {get; set;}
 
         //Relacionamento 
