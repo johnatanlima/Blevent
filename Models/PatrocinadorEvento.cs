@@ -1,10 +1,10 @@
 using Blevent.Models;
 
-namespace AspCore04.Models
+namespace Blevent.Models
 {
     public class PatrocinadorEvento{
 
-        public int PatrocinadorValorId {get; set;}
+        public int PatrocinadorEventoId {get; set;}
         public decimal ValorPatrocinado {get; set;}
     
         public int EventoId { get; set; }

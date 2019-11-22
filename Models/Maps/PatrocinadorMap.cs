@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AspCore04.Models.Maps
+namespace Blevent.Models.Maps
 {
     public class PatrocinadorMap : IEntityTypeConfiguration<Patrocinador>
     {
@@ -17,6 +17,11 @@ namespace AspCore04.Models.Maps
 
             //Props de Navegação e Relacionamentos 
             //Geradas Automaticamente pelo EF Core
+
+            builder.HasMany(x => x.PatrociniosValor)
+                .WithOne(x => x.PatrocinadorVirtual)
+                .HasForeignKey(x => x.PatrocinadorEventoId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
 using System;
-using Locar.Models;
+using Blevent.Models;
 
 namespace Blevent
 {

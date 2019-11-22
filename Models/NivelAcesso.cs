@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace Locar.Models
+namespace Blevent.Models
 {
     public class NivelAcesso : IdentityRole
     {

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AspCore04.Models.Maps
+namespace Blevent.Models.Maps
 {
     public class PatrocinadorEventoMap : IEntityTypeConfiguration<PatrocinadorEvento>
     {
@@ -9,15 +9,20 @@ namespace AspCore04.Models.Maps
         {
             builder.ToTable("Patrocinador_Evento");
 
-            builder.HasKey(k => k.PatrocinadorValorId).HasName("pk_PatrocinadorEventoId");
+            builder.HasKey(k => k.PatrocinadorEventoId).HasName("pk_PatrocinadorEventoId");
 
             builder.Property(p => p.ValorPatrocinado).HasColumnType("decimal(9,2)").IsRequired();
 
-            builder.HasOne(x => x.EventoVirtual).WithMany(x => x.PatrociniosValor).OnDelete(DeleteBehavior.SetNull).HasForeignKey(x => x.EventoId);
-            builder.HasOne(x => x.PatrocinadorVirtual).WithMany(x => x.PatrociniosValor).OnDelete(DeleteBehavior.SetNull).HasForeignKey(x => x.PatrocinadorId);
-            
-            //Props de Navegação e Relacionamentos
-            //Geradas automaticamente pelo EF Core
+            builder.HasOne(x => x.EventoVirtual)
+                .WithMany(x => x.PatrociniosValor)
+                .HasForeignKey(x => x.EventoId)
+                .OnDelete(DeleteBehavior.Cascade);
+                
+            builder.HasOne(x => x.PatrocinadorVirtual)
+                .WithMany(x => x.PatrociniosValor)
+                .HasForeignKey(x => x.PatrocinadorId)
+                .OnDelete(DeleteBehavior.Cascade);
+
 
         }
     }

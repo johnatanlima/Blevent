@@ -10,6 +10,13 @@
     - Alteracao de classe evento;
     - 
 
+    MAPPING -> EVENTO OK 
+            -> REALIZADOR
+            -> PATROCINADOR 
+            -> PATROCINADOREVENTO
+            -> EVENTO-PATROCINADOR
+                
+
     dotnet-aspnet-codegenerator controller -name CategoriaController -m Categoria -dc viewmodeldbcontexto -uld -outDir Controllers -scripts
 
 

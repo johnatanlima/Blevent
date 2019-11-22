@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace AspCore04.Models{
+namespace Blevent.Models{
     public class Patrocinador{
 
         public Patrocinador()

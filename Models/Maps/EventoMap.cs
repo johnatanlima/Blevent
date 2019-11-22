@@ -1,8 +1,7 @@
-using Blevent.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AspCore04.Models.Maps
+namespace Blevent.Models.Maps
 {
     public class EventoMap : IEntityTypeConfiguration<Evento>
     {
@@ -29,7 +28,12 @@ namespace AspCore04.Models.Maps
             builder.HasOne(x => x.RealizadorVirtual)
                 .WithMany(x => x.Eventos)
                 .HasForeignKey(x => x.RealizadorId)
-                .OnDelete(DeleteBehavior.SetNull);           
+                .OnDelete(DeleteBehavior.SetNull);
+
+            builder.HasMany(x => x.PatrociniosValor)
+                .WithOne(x => x.EventoVirtual)
+                .HasForeignKey(x => x.EventoId)
+                .OnDelete(DeleteBehavior.Cascade);           
         }
     }
 }
