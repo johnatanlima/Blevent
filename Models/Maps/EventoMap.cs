@@ -33,7 +33,7 @@ namespace Blevent.Models.Maps
             builder.HasMany(x => x.PatrociniosValor)
                 .WithOne(x => x.EventoVirtual)
                 .HasForeignKey(x => x.EventoId)
-                .OnDelete(DeleteBehavior.Cascade);           
+                .OnDelete(DeleteBehavior.SetNull);           
         }
     }
 }

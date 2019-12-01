@@ -7,6 +7,7 @@ namespace Blevent.Models.ViewModels
         
         [DataType(DataType.Currency, ErrorMessage="Informe um valor válido!")]
         [Display(Description="Valor do patrocínio")]
+        [Required(ErrorMessageResourceName = "Este campo é obrigatório!")]
         public decimal ValorPatrocinado {get; set;}
 
         [Display(Description = "Informe qual evento")]

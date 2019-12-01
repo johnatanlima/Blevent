@@ -16,12 +16,12 @@ namespace Blevent.Models.Maps
             builder.HasOne(x => x.EventoVirtual)
                 .WithMany(x => x.PatrociniosValor)
                 .HasForeignKey(x => x.EventoId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.SetNull);
                 
             builder.HasOne(x => x.PatrocinadorVirtual)
                 .WithMany(x => x.PatrociniosValor)
                 .HasForeignKey(x => x.PatrocinadorId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.SetNull);
 
 
         }
