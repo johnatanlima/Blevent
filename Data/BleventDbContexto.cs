@@ -11,8 +11,8 @@ namespace Blevent.Data
         public DbSet<NivelAcesso> NiveisAcesso {get; set;}
         public DbSet<Evento> Eventos {get; set;}
         public DbSet<Realizador> Realizadores {get; set;}
-        //DbSet<Pa> Patrocinadores {get; set;}
-        //DbSet<PatrocinadorEvento> PatrocinadoresEventos{get; set;}
+        public DbSet<Patrocinador> Patrocinadores {get; set;}
+        public DbSet<PatrocinadorEvento> PatrocinadoresEventos{get; set;}
       
         public BleventDbContexto(DbContextOptions<BleventDbContexto> options)
             : base(options)
